@@ -16,6 +16,13 @@ type Record struct {
 	Field3 Secret
 }
 
+// Set values
+type T struct {
+	F1 int
+	F2 string
+	F3 float64
+}
+
 func main() {
 	A := Record{"String Value", -12.123, Secret{"Vladyslav", "Freishmidt"}}
 	r := reflect.ValueOf(A)
@@ -41,4 +48,31 @@ func main() {
 			fmt.Println(r.Field(i).Type())
 		}
 	}
+
+	// Set values
+	fmt.Println("")
+
+	A1 := T{1, "F2", 3.0}
+	fmt.Println("A1:", A1)
+
+	// Examine variable A1
+	r1 := reflect.ValueOf(&A1).Elem()
+	fmt.Println("String value:", r1.String())
+
+	typeOfA1 := r1.Type()
+
+	for i := 0; i < r.NumField(); i++ {
+		f := r1.Field(i)
+		tOfA1 := typeOfA1.Field(i).Name
+		fmt.Printf("%d: %s %s = %v\n", i, tOfA1, f.Type(), f.Interface())
+
+		k := reflect.TypeOf(r1.Field(i).Interface()).Kind()
+		if k == reflect.Int {
+			r1.Field(i).SetInt(-100)
+		} else if k == reflect.String {
+			r1.Field(i).SetString("Changed!")
+		}
+	}
+
+	fmt.Println("A1:", A1)
 }
