@@ -10,7 +10,6 @@ func Add(a, b ar2x2) ar2x2 {
 	for i := 0; i < 2; i++ {
 		for j := 0; j < 2; j++ {
 			c[i][j] = a[i][j] + b[i][j]
-			fmt.Printf("%d = %d + %d\n", c[i][j], a[i][j], b[i][j])
 		}
 	}
 
