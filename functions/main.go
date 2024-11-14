@@ -6,14 +6,14 @@ func doubleSquare(x int) (int, int) {
 	return x * 2, x * x
 }
 
-var (
-	double int
-	square int
-)
-
 func main() {
-	var num int = 99
-	double, square = doubleSquare(num)
+	n := 10
+	d, s := doubleSquare(n)
+	fmt.Printf("input: %d, double: %d, square: %d\n", n, d, s)
 
-	fmt.Printf("input: %d, double: %d, square: %d\n", num, double, square)
+	// An anonymous function
+	anF := func(param int) int {
+		return param * param
+	}
+	fmt.Println("anF of", n, "is", anF(n))
 }
