@@ -1,6 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
+
+type Grades struct {
+	Name    string
+	Surname string
+	Grade   int
+}
 
 func doubleSquare(x int) (int, int) {
 	return x * 2, x * x
@@ -19,6 +28,24 @@ func main() {
 	fmt.Println(sortTwo(1, -3))
 	fmt.Println(sortTwo(-1, 0))
 
+	data := []Grades{
+		{"John", "Doe", 10},
+		{"Sarah", "Smith", 3},
+		{"Mike", "Anderson", 8},
+	}
+
+	isSorted := sort.SliceIsSorted(data, func(i, j int) bool {
+		return data[i].Grade < data[j].Grade
+	})
+
+	if isSorted {
+		fmt.Println("It is sorted!")
+	} else {
+		fmt.Println("It is NOT sorted!")
+	}
+	sort.Slice(data,
+		func(i, j int) bool { return data[i].Grade < data[j].Grade })
+	fmt.Println("By Grade:", data)
 }
 
 func sortTwo(x, y int) (int, int) {
