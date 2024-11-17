@@ -46,6 +46,17 @@ func main() {
 	sort.Slice(data,
 		func(i, j int) bool { return data[i].Grade < data[j].Grade })
 	fmt.Println("By Grade:", data)
+
+	// Calling funRet
+	n = 10
+	i := funRet(n)
+	j := funRet(-4)
+	fmt.Printf("%T\n", i)
+	fmt.Printf("%T %v\n", j, j)
+	fmt.Println("j", j, j(-5))
+
+	fmt.Println("************ d1() function call ************")
+	d1()
 }
 
 func sortTwo(x, y int) (int, int) {
@@ -79,4 +90,14 @@ func funRet(i int) func(int) int {
 	return func(k int) int {
 		return k * k
 	}
+}
+
+func d1() {
+	for i := 3; i > 0; i-- {
+		defer func() {
+			fmt.Print(i, " ")
+		}()
+	}
+
+	fmt.Println("Some d1 functionality")
 }
