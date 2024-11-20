@@ -11,15 +11,14 @@ type Grades struct {
 	Grade   int
 }
 
-func doubleSquare(x int) (int, int) {
-	return x * 2, x * x
-}
-
 func main() {
+	fmt.Println("************ doubleSquare() function call ************")
+	// doubleSquare returns two int values
 	n := 10
 	d, s := doubleSquare(n)
 	fmt.Printf("input: %d, double: %d, square: %d\n", n, d, s)
 
+	fmt.Println("************ anF() function call ************")
 	// An anonymous function
 	anF := func(param int) int {
 		return param * param
@@ -47,6 +46,7 @@ func main() {
 		func(i, j int) bool { return data[i].Grade < data[j].Grade })
 	fmt.Println("By Grade:", data)
 
+	fmt.Println("************ funRet() function call ************")
 	// Calling funRet
 	n = 10
 	i := funRet(n)
@@ -59,6 +59,11 @@ func main() {
 	d1()
 }
 
+func doubleSquare(x int) (int, int) {
+	return x * 2, x * x
+}
+
+// sortTwo returns two int values sorting from smaller to bigger value
 func sortTwo(x, y int) (int, int) {
 	if x > y {
 		return y, x
