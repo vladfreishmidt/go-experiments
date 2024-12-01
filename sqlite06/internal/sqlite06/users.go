@@ -1,3 +1,23 @@
+/*
+The package works on 2 tables on an SQLite database.
+The names of the tables are:
+    * Users
+    * Userdata
+The definitions of the tables are:
+    CREATE TABLE Users (
+        ID INTEGER PRIMARY KEY,
+        Username TEXT
+    );
+    CREATE TABLE Userdata (
+        UserID INTEGER NOT NULL,
+        Name TEXT,
+        Surname TEXT,
+        Description TEXT
+    );
+    This is rendered as code
+This is not rendered as code
+*/
+
 package sqlite06
 
 import (
